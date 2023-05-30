@@ -1,6 +1,7 @@
 import { useEffect } from "react";
 import { fetchArticles } from "../utils/utils";
 import ArticleCard from "./ArticleCard"
+import "../App.css";
 
 function Articles({ articlesList, setArticlesList }) {
 	
@@ -13,7 +14,7 @@ function Articles({ articlesList, setArticlesList }) {
 
     return (
 		<main>
-			<h2>Latest articles...</h2>
+			<h2 className="articleHead">Latest articles...</h2>
 				{articlesList.map((article) => {
 					return <ArticleCard key={article.article_id} article={article} />;
 				})}

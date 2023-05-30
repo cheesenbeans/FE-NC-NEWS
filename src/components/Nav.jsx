@@ -5,10 +5,12 @@ function Nav() {
   
     return (
       <nav className="nav"> 
-        <Link to="/"> Home </Link>
-        <Link to="/articles"> Articles </Link>
+      <section className="links">
+        <Link className="homeLink" to="/"> Home </Link>
+        <Link className="articlesLink" to="/articles"> Articles </Link>
         {/* <Link to="/topics"> Topics </Link>
         <Link to="/users"> Users </Link> */}
+        </section>
       </nav>
     );
   }

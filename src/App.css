@@ -47,17 +47,53 @@
 
 .header {
   border: 5px solid yellow;
+  padding: 5rem;
+  text-align: left;
 }
 
 .nav {
-  border: 5px solid red;
+  border: 5px solid darkgoldenrod;
+  text-align: left;
 }
 
+.links {
+  margin-left: 2rem;
+  color: white; 
+}
+
+.articlesLink {
+  margin-left: 2rem;
+}
+
+
 .homepagePara{
-  border: 5px solid green;
+  border: 5px solid darkorange;
 }
 
 .userLoginMain{
-  border: 5px solid blue;
+  border: 5px solid antiquewhite;
+}
+
+
+.articleHead {
+  border: 5px solid darkorange;
+}
+
+
+.articleCard {
+  display:flex;
+  height: 10rem;
+  justify-content: center;
+  border: 5px solid darkgoldenrod;
+  padding: 2rem;
+  margin: 2rem;
+}
+
+.articleTitle{
+  width: 10rem;
+}
+
+.subinfo{
+  width: 20rem;
 }
 
