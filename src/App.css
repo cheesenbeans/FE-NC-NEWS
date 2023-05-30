@@ -40,3 +40,24 @@
 .read-the-docs {
   color: #888;
 }
+
+.footer {
+  border: 5px solid yellow;
+}
+
+.header {
+  border: 5px solid yellow;
+}
+
+.nav {
+  border: 5px solid red;
+}
+
+.homepagePara{
+  border: 5px solid green;
+}
+
+.userLoginMain{
+  border: 5px solid blue;
+}
+

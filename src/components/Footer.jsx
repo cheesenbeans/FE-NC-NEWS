@@ -1,8 +1,12 @@
+import "../App.css";
+
 function Footer () {
-    return(
-        <main>
-            <a>Follow us on Social Media</a>
-        </main>
+    return (
+        <footer className="footer">
+            <p>Follow us on Social Media...</p>
+            <a href="www.twitter.com">Click here for Twitter</a>
+            <a href="www.Instagram.com">Click here for Instagram</a>
+        </footer>
     )
 }
 
