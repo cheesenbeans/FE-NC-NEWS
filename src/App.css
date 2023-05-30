@@ -82,7 +82,7 @@
 
 .articleCard {
   display:flex;
-  height: 10rem;
+  height: 12rem;
   justify-content: center;
   border: 5px solid darkgoldenrod;
   padding: 2rem;
@@ -97,3 +97,9 @@
   width: 20rem;
 }
 
+.leftArticleCard{
+  text-align: center;
+  font-size: small;
+  display: block;
+
+}
