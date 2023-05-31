@@ -1,4 +1,5 @@
 import "../App.css";
+import { Link } from "react-router-dom";
 
 export default function ArticleCard({
   article: { article_id, title, topic, author, created_at, votes, article_img_url },
@@ -8,7 +9,7 @@ export default function ArticleCard({
     <article className="articleCard">
       <div className="leftArticleCard">
       <h3 className="articleTitle">{title}</h3>
-      <a href={`http://localhost:5175/articles/${article_id}`}><button>Read the article here</button></a>
+      <Link to={`/articles/${article_id}`}> <button >Read the article here</button> </Link>
       </div>
       <div className="subinfo">
         <p>Written by: {author}</p>
