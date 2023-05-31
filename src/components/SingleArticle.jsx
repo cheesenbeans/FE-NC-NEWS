@@ -9,6 +9,7 @@ export default function SingleArticle() {
   const [commentsByArticleId, setCommentsByArticleId] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [commentsLoading, setCommentsLoading] = useState(true);
+  const [failedPatch, setFailedPatch] = useState(false)
   const { article_id } = useParams();
 
   useEffect(() => {
@@ -27,7 +28,13 @@ export default function SingleArticle() {
   }, []);
 
   function submitVote(article_id, num) {
-    patchVotesByArticleId(article_id, num);
+    setFailedPatch(false)
+    patchVotesByArticleId(article_id, num).catch((err)=>{
+        setFailedPatch(true)
+        setSingleArticle((currArticle) => {
+            return { ...currArticle, votes: currArticle.votes - num };
+          }); 
+    });
     setSingleArticle((currArticle) => {
             return { ...currArticle, votes: currArticle.votes + num };
           }); 
@@ -45,6 +52,7 @@ export default function SingleArticle() {
         </div>
         <div className="articleRight">
         <p>Votes: {singleArticle.votes}</p>
+        {failedPatch && <p>ERROR - vote has not been submitted</p>}
         <button onClick={() => submitVote(singleArticle.article_id, 1)}><span role="img" aria-label="thumbs-up-emoji">&#128077;</span></button>
         <button onClick={() => submitVote(singleArticle.article_id, -1)}><span role="img" aria-label="thumbs-down-emoji">&#128078;</span></button>
         </div>
