@@ -115,6 +115,16 @@
 
 .article{
   border: 2px solid lightgreen;
+  display: flex;
+}
+
+.articleLeft{
+  width: 90%;
+  border-right: 2px solid lightgreen;
+}
+
+.articleRight{
+  padding: 1rem;
 }
 
 .comments{
