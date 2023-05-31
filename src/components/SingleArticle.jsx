@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { fetchArticleById, fetchCommentsByArticleId } from "../utils/utils";
 import { useParams } from "react-router-dom";
 import CommentCard from "./CommentCard";
+import AddAComment from "./AddAComment";
 import "../App.css";
 
 export default function SingleArticle() {
@@ -38,6 +39,7 @@ export default function SingleArticle() {
       </div>
       <section className="comments">
         <h3 className="commentsh3">Comments</h3>
+        <AddAComment article_id={singleArticle.article_id}/>
         {commentsLoading && <p>Comments are loading...</p>}
         <ul>
           {(commentsByArticleId.length === 0 && <p>No comments</p> ||
