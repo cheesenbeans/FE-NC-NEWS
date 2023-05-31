@@ -82,24 +82,51 @@
 
 .articleCard {
   display:flex;
-  height: 12rem;
+  height: 8rem;
   justify-content: center;
-  border: 5px solid darkgoldenrod;
-  padding: 2rem;
-  margin: 2rem;
 }
 
+.wholeArticleCard{
+  padding: 0.5rem;
+  margin-block: 1rem ;
+  padding-block: 1rem;
+  border: 5px solid darkgoldenrod;
+}
+  
 .articleTitle{
-  width: 10rem;
+  width: 8rem;
+  font-size: small;
 }
 
 .subinfo{
-  width: 20rem;
+  width: 10rem;
+  font-size:x-small
 }
 
 .leftArticleCard{
   text-align: center;
   font-size: small;
-  display: block;
+}
 
+.articleCardButton{
+  width:8rem;
+  height: 3.5rem;
+}
+
+.article{
+  border: 2px solid lightgreen;
+}
+
+.comments{
+  border: 2px solid orange;
+  padding: 2rem;
+  
+}
+
+.commentsh3{
+  text-align: left;
+}
+
+.commentCard{
+  border: 2px solid darkorange;
 }
