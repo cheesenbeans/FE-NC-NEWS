@@ -4,7 +4,7 @@ import { postComment } from "../utils/utils";
 
 export default function AddAComment(article_id) {
   const [commentToAdd, setCommentToAdd] = useState({
-    username: "",
+    username: "tickle122",
     body: ""
   });
   const [addedComment, setAddedComment] = useState({})
@@ -20,25 +20,26 @@ export default function AddAComment(article_id) {
 
   function handleSubmit(event){
     event.preventDefault();
+    console.log(commentToAdd)
     if(commentToAdd.username==="" || commentToAdd.body===""){
         setErrorMessage(true)
     } else {
     postComment(article_id, commentToAdd).then((comment)=>{
        setAddedComment(comment)
-       setCommentToAdd({})
+       setCommentToAdd({username: "tickle122",
+       body: ""})
        setCommentSuccessful(true)
     })}
   }
 
   return (
   <>
-    <section>
+    <section className="addAComment">
       <h3>Add a Comment...</h3>
       <form onSubmit={handleSubmit}>
-        {errorMessage && <p>You must select a username and write a comment before submitting...</p>}
         <label htmlFor="commentsUsername">Username: </label>
         <select
-          def
+          def="true"
           id="Username"
           size="1"
           onChange={(event) => {
@@ -53,26 +54,38 @@ export default function AddAComment(article_id) {
           <option value="weegembump">grumweegembumppy19</option>
           <option value="jessjelly">jessjelly</option>
         </select>
+        <span>
+            <p></p>
+        </span>
         <label htmlFor="body">Comment: </label>
         <input
           id="body"
+          type="text" 
+          style={{ height: "3rem", width: "75%" }}
           onChange={(event) => {
             handleChange("body", event);
           }}
           value={commentToAdd.body || ""}
         ></input>
+        <span>
+            <p></p>
+        </span>
         <button type="submit">Add your Comment</button>
-      </form>
+      </form> 
+      {errorMessage && <p className="errorMessage">You must select a username and write a comment before submitting...</p>}
     </section>
-
+   
      {commentSuccessful && (
-        <section>
+        <ul className="successfulComment">
             <h3>Your comment has been added...</h3>
+            <article className="successfulCommentCard">
                 <h5>Author: {addedComment.author}</h5>
                 <p>{addedComment.body}</p>
                 <p>Votes: {addedComment.votes}</p>
                 <p>Created at: {addedComment.created_at.substring(0,10)}</p>
-        </section>
+                </article>
+                
+        </ul>
         )
     }     
 
