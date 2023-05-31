@@ -5,6 +5,7 @@ import Footer from "./components/Footer";
 import Nav from "./components/Nav";
 import Home from "./components/Home";
 import Articles from "./components/Articles";
+import SingleArticle from "./components/SingleArticle";
 import "./App.css";
 
 function App() {
@@ -19,6 +20,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/articles" element={<Articles articlesList={articlesList} setArticlesList={setArticlesList} />} />
+          <Route path="/articles/:article_id" element={<SingleArticle />} />
         </Routes>
         <Footer />
       </>
