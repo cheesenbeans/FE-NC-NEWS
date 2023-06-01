@@ -2,7 +2,7 @@ import "../App.css";
 import { useState } from "react";
 import { postComment } from "../utils/utils";
 
-export default function AddAComment(article_id) {
+export default function AddAComment(article_id, setCommentsByArticleId) {
   const [commentToAdd, setCommentToAdd] = useState({
     username: "tickle122",
     body: ""
@@ -20,7 +20,6 @@ export default function AddAComment(article_id) {
 
   function handleSubmit(event){
     event.preventDefault();
-    console.log(commentToAdd)
     if(commentToAdd.username==="" || commentToAdd.body===""){
         setErrorMessage(true)
     } else {
@@ -29,7 +28,11 @@ export default function AddAComment(article_id) {
        setCommentToAdd({username: "tickle122",
        body: ""})
        setCommentSuccessful(true)
-    })}
+       setCommentsByArticleId((currComments)=>{
+        return [comment, ...currComments]
+        })
+       })  
+    }
   }
 
   return (
