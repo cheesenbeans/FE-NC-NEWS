@@ -1,7 +1,6 @@
 import "../App.css";
 
 import { Link } from "react-router-dom";
-import TopicArticleList from "./TopicArticleList";
 
 export default function TopicCard({
   topic: { slug, description },
