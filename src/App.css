@@ -65,6 +65,9 @@
   margin-left: 2rem;
 }
 
+.topicsLink {
+  margin-left: 2rem;
+}
 
 .homepagePara{
   border: 5px solid darkorange;
@@ -139,4 +142,15 @@
 
 .commentCard{
   border: 2px solid darkorange;
+}
+
+.topicCard{
+  display:flex;
+  height: 8rem;
+  justify-content: center;
+  border: 2px solid darkorange;
+}
+
+.topicButton{
+  margin:2rem;
 }

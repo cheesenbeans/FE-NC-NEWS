@@ -8,8 +8,8 @@ function Nav() {
       <section className="links">
         <Link className="homeLink" to="/"> Home </Link>
         <Link className="articlesLink" to="/articles"> Articles </Link>
-        {/* <Link to="/topics"> Topics </Link>
-        <Link to="/users"> Users </Link> */}
+        <Link className="topicsLink" to="/topics"> Topics </Link>
+
         </section>
       </nav>
     );

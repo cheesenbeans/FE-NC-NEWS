@@ -28,3 +28,17 @@ export const patchVotesByArticleId = (article_id, num) => {
   }
   return ncNewsApi.patch(`/api/articles/${article_id}`, patchBody)
 };
+
+export const fetchTopics = () => {
+  return ncNewsApi.get("/api/topics").then(({ data: { topics } }) => {
+    return topics;
+  });
+};
+
+export const fetchArticlesByTopic = (topicQuery) => {
+  return ncNewsApi
+    .get(`/api/articles?topic=${topicQuery}`)
+    .then(({ data: { articles } }) => {
+      return articles;
+    });
+};
