@@ -25,7 +25,7 @@ export default function SingleArticle() {
           setCommentsLoading(false);
         });
       });
-  }, [commentsByArticleId]);
+  }, []);
 
   return (
     <article>
