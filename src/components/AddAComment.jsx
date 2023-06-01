@@ -2,7 +2,7 @@ import "../App.css";
 import { useState } from "react";
 import { postComment } from "../utils/utils";
 
-export default function AddAComment(article_id) {
+function AddAComment({article_id, commentsByArticleId, setCommentsByArticleId}) {
   const [commentToAdd, setCommentToAdd] = useState({
     username: "tickle122",
     body: "",
@@ -29,8 +29,12 @@ export default function AddAComment(article_id) {
       });
       setAddedComment(commentToAdd);
       setCommentSuccessful(true);
+      setCommentsByArticleId((commentsByArticleId)=>{
+        return [commentToAdd, ...commentsByArticleId]
+      });
     }
   }
+  
 
   const date = new Date();
   let day = date.getDate();
@@ -92,7 +96,6 @@ export default function AddAComment(article_id) {
             <h5>Author: {addedComment.username}</h5>
             <p>{addedComment.body}</p>
             <p>Votes: 0</p>
-            <p>Created at: {currentDate}</p>
           </article>
         </ul>
       )}
@@ -103,3 +106,5 @@ export default function AddAComment(article_id) {
     </>
   );
 }
+
+export default AddAComment;

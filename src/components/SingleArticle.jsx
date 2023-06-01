@@ -26,6 +26,7 @@ export default function SingleArticle() {
         });
       });
   }, []);
+  
 
   return (
     <article>
@@ -39,9 +40,9 @@ export default function SingleArticle() {
       </div>
       <section className="comments">
         <h3 className="commentsh3">Comments</h3>
-        <AddAComment article_id={singleArticle.article_id} setCommentsByArticleId={setCommentsByArticleId}/>
+        <AddAComment article_id={singleArticle.article_id} commentsByArticleId={commentsByArticleId} setCommentsByArticleId={setCommentsByArticleId} />
         {commentsLoading && <p>Comments are loading...</p>}
-        <ul>
+        <ul key="commentCard">
           {(commentsByArticleId.length === 0 && <p>No comments</p> ||
             commentsByArticleId.map((comment) => {
               return <CommentCard key={comment.comment_id} comment={comment}  />;
