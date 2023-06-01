@@ -27,6 +27,7 @@ export const fetchCommentsByArticleId = (article_id) => {
 };
 
 export const postComment = ({article_id}, comment) => {
+  console.log(comment, article_id)
   return ncNewsApi
     .post(`/api/articles/${article_id}/comments`, comment)
     .then(({ data: { comment } }) => {
