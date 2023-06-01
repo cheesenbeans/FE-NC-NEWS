@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { fetchArticles, fetchCommentsByArticleId } from "../utils/utils";
+import { fetchArticles } from "../utils/utils";
 import ArticleCard from "./ArticleCard";
 import "../App.css";
 
