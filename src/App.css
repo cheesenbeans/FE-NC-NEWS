@@ -65,6 +65,9 @@
   margin-left: 2rem;
 }
 
+.topicsLink {
+  margin-left: 2rem;
+}
 
 .homepagePara{
   border: 5px solid darkorange;
@@ -115,6 +118,16 @@
 
 .article{
   border: 2px solid lightgreen;
+  display: flex;
+}
+
+.articleLeft{
+  width: 90%;
+  border-right: 2px solid lightgreen;
+}
+
+.articleRight{
+  padding: 1rem;
 }
 
 .comments{
@@ -142,4 +155,14 @@
 
 .errorMessage{
   color: red
+}
+.topicCard{
+  display:flex;
+  height: 8rem;
+  justify-content: center;
+  border: 2px solid darkorange;
+}
+
+.topicButton{
+  margin:2rem;
 }
