@@ -29,6 +29,10 @@ function AddAComment({article_id, commentsByArticleId, setCommentsByArticleId}) 
       });
       setAddedComment(commentToAdd);
       setCommentSuccessful(true);
+      setCommentToAdd({
+        username: "tickle122",
+        body: "",
+      })
       setCommentsByArticleId((commentsByArticleId)=>{
         let newComment={
           author: addedComment.username,
