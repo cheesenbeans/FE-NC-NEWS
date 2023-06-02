@@ -1,16 +1,25 @@
 import "../App.css";
 import { useState } from "react";
+import { Link } from "react-router-dom";
 import { postComment } from "../utils/utils";
+import { useContext } from "react";
+import { UserContext } from "../Contexts/UserContext";
 
-function AddAComment({article_id, commentsByArticleId, setCommentsByArticleId}) {
+function AddAComment({
+  article_id,
+  commentsByArticleId,
+  setCommentsByArticleId,
+}) {
+  const { user } = useContext(UserContext);
   const [commentToAdd, setCommentToAdd] = useState({
-    username: "tickle122",
+    username: user.username,
     body: "",
   });
   const [addedComment, setAddedComment] = useState({});
   const [errorMessage, setErrorMessage] = useState(false);
   const [postErrorMessage, setPostErrorMessage] = useState(false);
   const [commentSuccessful, setCommentSuccessful] = useState(false);
+  const [loginMessage, setLoginMessage] = useState(false);
 
   function handleChange(objectKey, event) {
     setErrorMessage(false);
@@ -21,7 +30,9 @@ function AddAComment({article_id, commentsByArticleId, setCommentsByArticleId}) 
 
   function handleSubmit(event) {
     event.preventDefault();
-    if (commentToAdd.username === "" || commentToAdd.body === "") {
+    if (commentToAdd.username === "") {
+      setLoginMessage(true);
+    } else if (commentToAdd.body === "") {
       setErrorMessage(true);
     } else {
       postComment(article_id, commentToAdd).catch((err) => {
@@ -30,20 +41,19 @@ function AddAComment({article_id, commentsByArticleId, setCommentsByArticleId}) 
       setAddedComment(commentToAdd);
       setCommentSuccessful(true);
       setCommentToAdd({
-        username: "tickle122",
+        username: user.username,
         body: "",
-      })
-      setCommentsByArticleId((commentsByArticleId)=>{
-        let newComment={
+      });
+      setCommentsByArticleId((commentsByArticleId) => {
+        let newComment = {
           author: addedComment.username,
           body: addedComment.body,
-          votes: 0
-        }
-        return [newComment, ...commentsByArticleId]
+          votes: 0,
+        };
+        return [newComment, ...commentsByArticleId];
       });
     }
   }
-  
 
   const date = new Date();
   let day = date.getDate();
@@ -56,31 +66,11 @@ function AddAComment({article_id, commentsByArticleId, setCommentsByArticleId}) 
       <section className="addAComment">
         <h3>Add a Comment...</h3>
         <form onSubmit={handleSubmit}>
-          <label htmlFor="commentsUsername">Username: </label>
-          <select
-            def="true"
-            id="Username"
-            size="1"
-            onChange={(event) => {
-              handleChange("username", event);
-            }}
-            value={commentToAdd.username || ""}
-          >
-            <option value="tickle122">tickle122</option>
-            <option value="grumpy19">grumpy19</option>
-            <option value="happyamy2016">happyamy2016</option>
-            <option value="cooljmessy">cooljmessy</option>
-            <option value="weegembump">grumweegembumppy19</option>
-            <option value="jessjelly">jessjelly</option>
-          </select>
-          <span>
-            <p></p>
-          </span>
           <label htmlFor="body">Comment: </label>
           <input
             id="body"
             type="text"
-            style={{ height: "3rem", width: "75%" }}
+            style={{ height: "3rem", width: "65%" }}
             onChange={(event) => {
               handleChange("body", event);
             }}
@@ -91,22 +81,33 @@ function AddAComment({article_id, commentsByArticleId, setCommentsByArticleId}) 
           </span>
           <button type="submit">Add your Comment</button>
         </form>
+        {loginMessage && (
+          <>
+            <p className="errorMessage">
+              You must be logged in to post a comment.
+            </p>
+            <label htmlFor="body">Click here to login: </label>
+            <Link className="homeLink" to="/">
+              <button> Home Login </button>
+            </Link>
+          </>
+        )}
         {errorMessage && (
           <p className="errorMessage">
-            You must select a username and write a comment before submitting...
+            You must write a comment before submitting...
           </p>
         )}
       </section>
 
       {commentSuccessful && (
-        <ul className="successfulComment">
+        <div className="successfulComment">
           <h3>Your comment has been added...</h3>
           <article className="successfulCommentCard">
             <h5>Author: {addedComment.username}</h5>
             <p>{addedComment.body}</p>
             <p>Votes: 0</p>
           </article>
-        </ul>
+        </div>
       )}
 
       {postErrorMessage && (

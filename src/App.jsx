@@ -1,5 +1,6 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { useState } from "react";
+import { UserContext } from './Contexts/UserContext'
 import Header from "./components/Header";
 import Footer from "./components/Footer";
 import Nav from "./components/Nav";
@@ -13,10 +14,14 @@ import "./App.css";
 function App() {
   const [articlesList, setArticlesList] = useState([]);
   const [topicQuery, setTopicQuery]= useState("coding")
-
+  const [user, setUser] = useState({
+    username: "",
+    body: ""
+  })
 
   return (
   <BrowserRouter>
+    <UserContext.Provider value={{user, setUser}}>
       <>
         <Header />
         <Nav />
@@ -29,6 +34,7 @@ function App() {
         </Routes>
         <Footer />
       </>
+      </UserContext.Provider>
     </BrowserRouter>
     )
 }

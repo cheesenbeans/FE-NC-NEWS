@@ -1,6 +1,6 @@
 #root {
   max-width: 1280px;
-  margin: 0 auto;
+  margin: auto;
   padding: 2rem;
   text-align: center;
 }
@@ -54,6 +54,7 @@
 .nav {
   border: 5px solid darkgoldenrod;
   text-align: left;
+  height: 4rem;
 }
 
 .links {
@@ -75,6 +76,7 @@
 
 .userLoginMain{
   border: 5px solid antiquewhite;
+  height: 10rem;
 }
 
 
@@ -142,6 +144,8 @@
 
 .commentCard{
   border: 2px solid darkorange;
+
+  margin-block: 1rem;
 }
 
 .addAComment{
@@ -150,6 +154,11 @@
 }
 
 .successfulCommentCard{
+  border: 2px solid green;
+}
+
+.commentDeleted{
+  color: green;
   border: 2px solid green;
 }
 
@@ -165,4 +174,9 @@
 
 .topicButton{
   margin:2rem;
+}
+
+.signedIn{
+  align-self: flex-end;
+  margin-left:2rem;
 }

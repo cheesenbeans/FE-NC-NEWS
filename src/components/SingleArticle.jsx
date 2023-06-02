@@ -11,6 +11,7 @@ export default function SingleArticle() {
   const [isLoading, setIsLoading] = useState(true);
   const [commentsLoading, setCommentsLoading] = useState(true);
   const [failedPatch, setFailedPatch] = useState(false)
+  const [commentDeleted, setCommentDeleted] = useState(false)
   const { article_id } = useParams();
 
   useEffect(() => {
@@ -63,12 +64,12 @@ export default function SingleArticle() {
         <h3 className="commentsh3">Comments</h3>
         <AddAComment article_id={singleArticle.article_id} commentsByArticleId={commentsByArticleId} setCommentsByArticleId={setCommentsByArticleId} />
         {commentsLoading && <p>Comments are loading...</p>}
-        <ul key="commentCard">
+          {commentDeleted && <p className="commentDeleted">Comment deleted</p>}
           {(commentsByArticleId.length === 0 && <p>No comments</p> ||
             commentsByArticleId.map((comment) => {
-              return <CommentCard key={comment.comment_id} comment={comment}  />;
+              return <CommentCard key={comment.comment_id} comment={comment} commentsByArticleId={commentsByArticleId} setCommentsByArticleId={setCommentsByArticleId} setCommentDeleted={setCommentDeleted} />;
             }))}
-        </ul>
+
       </section>
     </article>
   );
