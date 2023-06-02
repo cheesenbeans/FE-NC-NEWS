@@ -8,6 +8,7 @@ function Home() {
   const { user, setUser } = useContext(UserContext);
   const [ username, setUsername] = useState("");
   const [ noUserSelected, setNoUserSelected] = useState(false);
+  const [ isLoading, setIsLoading ] = useState(false)
 
   function handleChange(event) {
     setNoUserSelected(false)
@@ -16,11 +17,13 @@ function Home() {
   }
 
   function handleSubmit(event) {
+    setIsLoading(true)
     event.preventDefault();
     if(username!==""){
     fetchUsers().then((users) => {
         users.map((user) => {
           if (user.username === username) {
+            setIsLoading(false)
             return setUser(user);
           }
         });
@@ -46,6 +49,7 @@ function Home() {
           </select>
           <button type="submit">Login</button>
         </form>
+        {isLoading && <p>Logging In</p>}
         {noUserSelected && <p className="errorMessage">Please select a username to login</p>}
       </section>
     </main>
