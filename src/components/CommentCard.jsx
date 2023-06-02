@@ -1,6 +1,6 @@
 import "../App.css";
 
-export default function CommentCard({ comment: { body, author, votes, created_at } }) {
+export default function CommentCard({ comment: { body, author, votes } }) {
     return (
       <>
       {body && ( 

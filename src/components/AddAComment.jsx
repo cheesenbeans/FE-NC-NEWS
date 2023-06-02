@@ -30,7 +30,12 @@ function AddAComment({article_id, commentsByArticleId, setCommentsByArticleId}) 
       setAddedComment(commentToAdd);
       setCommentSuccessful(true);
       setCommentsByArticleId((commentsByArticleId)=>{
-        return [commentToAdd, ...commentsByArticleId]
+        let newComment={
+          author: addedComment.username,
+          body: addedComment.body,
+          votes: 0
+        }
+        return [newComment, ...commentsByArticleId]
       });
     }
   }
