@@ -1,4 +1,6 @@
 import { deleteCommentByCommentId } from "../utils/utils";
+import { useContext } from "react";
+import { UserContext } from "../Contexts/UserContext";
 import "../App.css";
 
 export default function CommentCard({
@@ -8,7 +10,7 @@ export default function CommentCard({
   setCommentDeleted
 }) {
 
-  
+  const { user, setUser } = useContext(UserContext);
 
   function deleteComment(id) {
     const filtered =  commentsByArticleId.filter((commentToDelete) => { 
@@ -23,16 +25,14 @@ export default function CommentCard({
     <>
       {body && (
         <article className="commentCard">
-          <div className="articleLeft">
             <h5>Author: {author}</h5>
             <p>{body}</p>
             <p>Votes: {votes}</p>
-          </div>
-          <div className="articleRight">
+            {user.username===author && 
             <button onClick={() => deleteComment(comment_id)}>
               Delete Comment
             </button>
-          </div>
+            }
         </article>
       )}
     </>

@@ -28,7 +28,7 @@ function Home() {
     <main>
       <p className="homepagePara">Welcome on the Home page...</p>
       <section className="userLoginMain">
-        <h3>Login</h3>
+        <h3>Login here...</h3>
         <form onSubmit={handleSubmit}>
           <label htmlFor="selectUser">Select User: </label>
           <select def="true" id="selectUser" size="1" onChange={handleChange} value={username}>
@@ -39,7 +39,7 @@ function Home() {
             <option value="weegembump">weegembump</option>
             <option value="jessjelly">jessjelly</option>
           </select>
-          <button type="submit">Select User</button>
+          <button type="submit">Login</button>
         </form>
       </section>
     </main>

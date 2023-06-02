@@ -5,7 +5,6 @@ import "../App.css";
 
 function Nav() {
   const { user, setUser } = useContext(UserContext);
-  console.log(user);
 
   function handleSignOut() {
     setUser({});

@@ -14,7 +14,10 @@ import "./App.css";
 function App() {
   const [articlesList, setArticlesList] = useState([]);
   const [topicQuery, setTopicQuery]= useState("coding")
-  const [user, setUser] = useState("")
+  const [user, setUser] = useState({
+    username: "",
+    body: ""
+  })
 
   return (
   <BrowserRouter>
