@@ -54,6 +54,7 @@
 .nav {
   border: 5px solid darkgoldenrod;
   text-align: left;
+  height: 4rem;
 }
 
 .links {
@@ -165,4 +166,9 @@
 
 .topicButton{
   margin:2rem;
+}
+
+.signedIn{
+  align-self: flex-end;
+  margin-left:2rem;
 }

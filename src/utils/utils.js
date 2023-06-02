@@ -52,3 +52,13 @@ export const fetchTopics = () => {
   });
 };
 
+export const fetchUsers = () => {
+  return ncNewsApi.get("/api/users").then(({ data: { users } }) => {
+    return users;
+  });
+};
+
+export const deleteCommentByCommentId = (id) => {
+  return ncNewsApi.delete(`/api/comments/${id}`)
+}
+
