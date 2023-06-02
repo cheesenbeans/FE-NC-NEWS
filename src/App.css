@@ -144,6 +144,18 @@
   border: 2px solid darkorange;
 }
 
+.addAComment{
+  border: 5px solid darkgoldenrod;
+  height: 17rem;
+}
+
+.successfulCommentCard{
+  border: 2px solid green;
+}
+
+.errorMessage{
+  color: red
+}
 .topicCard{
   display:flex;
   height: 8rem;
