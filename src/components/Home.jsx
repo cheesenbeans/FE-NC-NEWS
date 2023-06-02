@@ -7,21 +7,25 @@ import "../App.css";
 function Home() {
   const { user, setUser } = useContext(UserContext);
   const [ username, setUsername] = useState("");
+  const [ noUserSelected, setNoUserSelected] = useState(false);
 
   function handleChange(event) {
+    setNoUserSelected(false)
     const newUser = event.target.value;
     setUsername(newUser)
   }
 
   function handleSubmit(event) {
     event.preventDefault();
+    if(username!==""){
     fetchUsers().then((users) => {
         users.map((user) => {
           if (user.username === username) {
             return setUser(user);
           }
         });
-      })
+      })}
+      else {setNoUserSelected(true)}
     }
 
   return (
@@ -31,7 +35,8 @@ function Home() {
         <h3>Login here...</h3>
         <form onSubmit={handleSubmit}>
           <label htmlFor="selectUser">Select User: </label>
-          <select def="true" id="selectUser" size="1" onChange={handleChange} value={username}>
+          <select def="" id="selectUser" size="1" onChange={handleChange} value={username}>
+            <option value="">selectuser</option>
             <option value="tickle122">tickle122</option>
             <option value="grumpy19">grumpy19</option>
             <option value="happyamy2016">happyamy2016</option>
@@ -41,6 +46,7 @@ function Home() {
           </select>
           <button type="submit">Login</button>
         </form>
+        {noUserSelected && <p className="errorMessage">Please select a username to login</p>}
       </section>
     </main>
   );

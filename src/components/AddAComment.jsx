@@ -106,6 +106,7 @@ function AddAComment({
             <h5>Author: {addedComment.username}</h5>
             <p>{addedComment.body}</p>
             <p>Votes: 0</p>
+            <button onClick={handleDelete}>Undo add comment</button>
           </article>
         </div>
       )}

@@ -64,7 +64,6 @@ export default function SingleArticle() {
         <h3 className="commentsh3">Comments</h3>
         <AddAComment article_id={singleArticle.article_id} commentsByArticleId={commentsByArticleId} setCommentsByArticleId={setCommentsByArticleId} />
         {commentsLoading && <p>Comments are loading...</p>}
-
           {commentDeleted && <p className="commentDeleted">Comment deleted</p>}
           {(commentsByArticleId.length === 0 && <p>No comments</p> ||
             commentsByArticleId.map((comment) => {

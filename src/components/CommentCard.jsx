@@ -7,7 +7,7 @@ export default function CommentCard({
   comment: { comment_id, body, author, votes },
   commentsByArticleId,
   setCommentsByArticleId,
-  setCommentDeleted
+  setCommentDeleted,
 }) {
 
   const { user, setUser } = useContext(UserContext);
